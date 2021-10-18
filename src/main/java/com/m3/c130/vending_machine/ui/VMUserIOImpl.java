@@ -38,7 +38,7 @@ public class VMUserIOImpl implements UserIO {
                 if (input >= min && input <= max) {
                     return input;
                 } else {
-                    print("Input out of range, please enter a value between" + min + " and " + max);
+                    print("Input out of range, please enter a value between " + min + " and " + max);
                 }
             } catch (Exception e) {
                 print("Invalid input, please enter a integer");
@@ -67,7 +67,7 @@ public class VMUserIOImpl implements UserIO {
                 if (input >= min && input <= max) {
                     return input;
                 } else {
-                    print("Input out of range, please enter a value between" + min + " and " + max);
+                    print("Input out of range, please enter a value between " + min + " and " + max);
                 }
             } catch (Exception e) {
                 print("Invalid input, please enter a double");

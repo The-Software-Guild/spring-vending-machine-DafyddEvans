@@ -51,10 +51,18 @@ public class VMView {
         io.print("You have £" + budget + " but the item costs £" + cost);
     }
 
+    public void itemPurchased(Item item) {
+        io.print("Dispensing one " + item.getName() + ", thank you for your purchase");
+    }
+
     public void dispenseCoins(Map<Change, Integer> map) {
-        io.print("Your change is:");
-        for (Map.Entry<Change, Integer> entry : map.entrySet()) {
-            io.print(entry.getValue() + " X " + entry.getKey().name);
+        if (map.size() == 0) {
+            io.print("Your balance is empty, no change required");
+        } else {
+            io.print("Your change is:");
+            for (Map.Entry<Change, Integer> entry : map.entrySet()) {
+                io.print(entry.getValue() + " X " + entry.getKey().name);
+            }
         }
     }
 

@@ -44,6 +44,7 @@ public class VMController {
                 System.out.println(e);
             }
         }
+        view.dispenseCoins(service.balanceToCoins());
     }
 
     public int getChoice() {
@@ -71,6 +72,7 @@ public class VMController {
                 purchaseItem(item);
             }
         }
+        view.itemPurchased(item);
         return true;
     }
 }
