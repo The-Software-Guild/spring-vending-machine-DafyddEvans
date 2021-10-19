@@ -1,28 +1,22 @@
-2021-10-19T14:55:03.007273::£1.30 added to balance
-2021-10-19T14:55:05.7583757::Pepsi-Max purchased for 1.30
-2021-10-19T14:55:10.7230385::£2.00 added to balance
-2021-10-19T14:55:11.9548466::Fanta purchased for 1.15
-2021-10-19T14:55:11.9588339::dispensed 1 X Fifty pence coin
-2021-10-19T14:55:11.9598314::dispensed 1 X Twenty pence coin
-2021-10-19T14:55:11.9598314::dispensed 1 X Ten pence coin
-2021-10-19T14:55:11.9598314::dispensed 1 X Five pence coin
-2021-10-19T14:56:35.6700399::£2.60 added to balance
-2021-10-19T14:56:46.4818274::7Up purchased for 1.70
-2021-10-19T14:56:46.4828258::dispensed 1 X Fifty pence coin
-2021-10-19T14:56:46.4828258::dispensed 2 X Twenty pence coin
-2021-10-19T14:56:49.1628715::£2.00 added to balance
-2021-10-19T14:56:50.3309228::Water purchased for 0.50
-2021-10-19T14:56:50.331921::dispensed 1 X One pound coin
-2021-10-19T14:56:50.331921::dispensed 1 X Fifty pence coin
-2021-10-19T14:57:08.8948261::£2.00 added to balance
-2021-10-19T14:57:09.7267213::dispensed 1 X Two pound coin
-2021-10-19T15:03:15.3063312::£2.00 added to balance
-2021-10-19T15:03:17.7381982::Fanta purchased for 1.15
-2021-10-19T15:03:17.7461782::dispensed 1 X Fifty pence coin
-2021-10-19T15:03:17.7471739::dispensed 1 X Twenty pence coin
-2021-10-19T15:03:17.7471739::dispensed 1 X Ten pence coin
-2021-10-19T15:03:17.7471739::dispensed 1 X Five pence coin
-2021-10-19T15:05:05.2058644::£1.00 added to balance
-2021-10-19T15:05:06.1632707::InsufficientFundsException thrown for Diet-Pepsi
-2021-10-19T15:05:21.1385726::£0.20 added to balance
-2021-10-19T15:05:24.1423091::Diet-Pepsi purchased for 1.20
+2021-10-19T15:48:38.1450513::£2.00 added to balance
+2021-10-19T15:48:39.032589::Tango purchased for £1.35
+2021-10-19T15:48:39.0425626::dispensed 1 X Fifty pence coin
+2021-10-19T15:48:39.0425626::dispensed 1 X Ten pence coin
+2021-10-19T15:48:39.0425626::dispensed 1 X Five pence coin
+2021-10-19T15:48:42.3331682::£0.40 added to balance
+2021-10-19T15:48:43.4939256::InsufficientFundsException thrown for Water
+2021-10-19T15:48:45.3491784::£0.20 added to balance
+2021-10-19T15:49:01.1541513::Water purchased for £0.50
+2021-10-19T15:49:01.1541513::dispensed 1 X Ten pence coin
+2021-10-19T15:49:07.2457995::£1.35 added to balance
+2021-10-19T15:49:10.6094848::Tango purchased for £1.35
+2021-10-19T15:49:25.9966712::£2.00 added to balance
+2021-10-19T15:49:26.8461853::Fanta purchased for £1.15
+2021-10-19T15:49:26.8461853::dispensed 1 X Fifty pence coin
+2021-10-19T15:49:26.8461853::dispensed 1 X Twenty pence coin
+2021-10-19T15:49:26.8461853::dispensed 1 X Ten pence coin
+2021-10-19T15:49:26.847182::dispensed 1 X Five pence coin
+2021-10-19T15:49:28.5291187::£2.00 added to balance
+2021-10-19T15:49:29.3812698::NoItemInventoryException thrown for Fanta
+2021-10-19T15:49:36.1130118::NoItemInventoryException thrown for Fanta
+2021-10-19T15:49:51.4564375::dispensed 1 X Two pound coin

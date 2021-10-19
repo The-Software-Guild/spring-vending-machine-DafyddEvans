@@ -34,7 +34,7 @@ public class VMServiceLayerImpl implements VMServiceLayer {
         auditDao.writeAuditEntry(String.format("£%.2f added to balance", balance.doubleValue()));
     }
 
-    public void subtractBalance(BigDecimal balance) {
+    public void subtractBalance(BigDecimal balance) throws VMDaoException {
         this.balance = this.balance.subtract(balance).setScale(2, RoundingMode.DOWN);
     }
 
@@ -48,7 +48,7 @@ public class VMServiceLayerImpl implements VMServiceLayer {
         if (item.getQuantity() > 0) {
             if (item.getCost().doubleValue() <= balance.doubleValue()) {
                 if (dispenseItem(item)) {
-                    auditDao.writeAuditEntry(String.format("%s purchased for %.2f", item.getName(), item.getCost()));
+                    auditDao.writeAuditEntry(String.format("%s purchased for £%.2f", item.getName(), item.getCost()));
                     subtractBalance(item.getCost());
                     return true;
                 } else {
@@ -73,9 +73,9 @@ public class VMServiceLayerImpl implements VMServiceLayer {
         Map<Change, Integer> map = new HashMap<>();
         for (Change change : Change.values()) {
             int i = balance.divide(BigDecimal.valueOf(change.value), RoundingMode.DOWN).intValue();
-            balance = balance.subtract(BigDecimal.valueOf((i * change.value)));
             if (i > 0) {
                 auditDao.writeAuditEntry("dispensed " + i + " X " + change.name);
+                subtractBalance(BigDecimal.valueOf((i * change.value)));
                 map.put(change, i);
             }
             if (balance.doubleValue() == 0) {

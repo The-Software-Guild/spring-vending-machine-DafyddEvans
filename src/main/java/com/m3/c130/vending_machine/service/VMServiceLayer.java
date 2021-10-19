@@ -16,6 +16,8 @@ public interface VMServiceLayer {
 
     void addBalance(BigDecimal balance) throws VMDaoException;
 
+    void subtractBalance(BigDecimal balance) throws VMDaoException;
+
     List<Item> listVMItems();
 
     boolean purchaseItem(Item item) throws VMDaoException, NoItemInventoryException, InsufficientFundsException;
