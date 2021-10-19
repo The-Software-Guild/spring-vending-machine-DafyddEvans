@@ -55,9 +55,11 @@ public class VMServiceLayerImpl implements VMServiceLayer {
                     return false;
                 }
             } else {
+                auditDao.writeAuditEntry("InsufficientFundsException thrown for " + item.getName());
                 throw new InsufficientFundsException("You don't have enough funds, please insert more coins");
             }
         } else {
+            auditDao.writeAuditEntry("NoItemInventoryException thrown for " + item.getName());
             throw new NoItemInventoryException("This item is out of stock, please make another selection");
         }
     }

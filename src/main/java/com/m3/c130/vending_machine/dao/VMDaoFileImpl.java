@@ -28,7 +28,7 @@ public class VMDaoFileImpl implements VMDao {
                         Integer.parseInt(currentLine[2])));
             }
         } catch (FileNotFoundException e) {
-            throw new VMDaoException("Vending machine could not be loaded to memory", e);
+            throw new VMDaoException("Vending machine contents could not be loaded to memory", e);
         }
         return true;
     }
@@ -44,7 +44,7 @@ public class VMDaoFileImpl implements VMDao {
             writer.close();
             return true;
         } catch (IOException e) {
-            throw new VMDaoException("Could not save vending machine to memory", e);
+            throw new VMDaoException("Could not save vending machine contents to memory", e);
         }
     }
 

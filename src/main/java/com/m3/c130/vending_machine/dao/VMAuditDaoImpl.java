@@ -20,7 +20,7 @@ public class VMAuditDaoImpl implements VMAuditDao {
     public void writeAuditEntry(String entry) throws VMDaoException {
         try {
             PrintWriter writer = new PrintWriter(new FileWriter(FILENAME, true), true);
-            writer.write(LocalDateTime.now().format(DateTimeFormatter.ISO_LOCAL_DATE_TIME) + "::" + entry + "\n");
+            writer.println(LocalDateTime.now().format(DateTimeFormatter.ISO_LOCAL_DATE_TIME) + "::" + entry);
             writer.close();
         } catch (IOException e) {
             throw new VMDaoException("Could not save to audit file", e);

@@ -16,3 +16,13 @@
 2021-10-19T14:56:50.331921::dispensed 1 X Fifty pence coin
 2021-10-19T14:57:08.8948261::£2.00 added to balance
 2021-10-19T14:57:09.7267213::dispensed 1 X Two pound coin
+2021-10-19T15:03:15.3063312::£2.00 added to balance
+2021-10-19T15:03:17.7381982::Fanta purchased for 1.15
+2021-10-19T15:03:17.7461782::dispensed 1 X Fifty pence coin
+2021-10-19T15:03:17.7471739::dispensed 1 X Twenty pence coin
+2021-10-19T15:03:17.7471739::dispensed 1 X Ten pence coin
+2021-10-19T15:03:17.7471739::dispensed 1 X Five pence coin
+2021-10-19T15:05:05.2058644::£1.00 added to balance
+2021-10-19T15:05:06.1632707::InsufficientFundsException thrown for Diet-Pepsi
+2021-10-19T15:05:21.1385726::£0.20 added to balance
+2021-10-19T15:05:24.1423091::Diet-Pepsi purchased for 1.20

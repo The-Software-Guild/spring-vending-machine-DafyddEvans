@@ -5,6 +5,6 @@ Tango::1.35::7
 Sprite::1.65::7
 Pepsi-Max::1.30::8
 Diet-Coke::1.25::10
-Diet-Pepsi::1.20::7
+Diet-Pepsi::1.20::6
 Pepsi::1.50::9
-Fanta::1.15::6
+Fanta::1.15::5
