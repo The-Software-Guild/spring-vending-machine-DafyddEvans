@@ -4,7 +4,6 @@ import com.m3.c130.vending_machine.Change;
 import com.m3.c130.vending_machine.dto.Item;
 import com.m3.c130.vending_machine.ui.UserIO;
 
-import java.math.BigDecimal;
 import java.util.List;
 import java.util.Map;
 
@@ -18,7 +17,7 @@ public class VMView {
     }
 
     public void displayBalance(Object balance) {
-        io.print("Your balance is £" + balance);
+        io.print("\nYour balance is £" + balance);
     }
 
     public void displayMenu(List<Item> lst) {
@@ -34,8 +33,8 @@ public class VMView {
         return increaseBalance();
     }
 
-    public double getMoreBalance() {
-        io.print("You don't have enough money");
+    public double getMoreBalance(String message) {
+        io.print(message);
         return increaseBalance();
     }
 
@@ -45,10 +44,6 @@ public class VMView {
 
     public int chooseItem(List<Item> lst) {
         return io.readInt("What item would you like to purchase?", 0, lst.size());
-    }
-
-    public void insufficientFunds(BigDecimal budget, BigDecimal cost) {
-        io.print("You have £" + budget + " but the item costs £" + cost);
     }
 
     public void itemPurchased(Item item) {
@@ -68,5 +63,9 @@ public class VMView {
 
     public void emptyVM() {
         io.print("The vending machine is empty, please come back when the vending machine is restocked");
+    }
+
+    public void displayErrorMessage(String message) {
+        io.print(message);
     }
 }

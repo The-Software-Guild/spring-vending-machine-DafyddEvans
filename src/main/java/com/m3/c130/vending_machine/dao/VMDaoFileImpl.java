@@ -1,5 +1,6 @@
 package com.m3.c130.vending_machine.dao;
 
+import com.m3.c130.vending_machine.VMDaoException;
 import com.m3.c130.vending_machine.dto.Item;
 
 import java.io.*;
@@ -10,30 +11,30 @@ public class VMDaoFileImpl implements VMDao {
     private final String DELIMITER = "::";
     private Map<String, Item> map = new HashMap<>();
 
-    public VMDaoFileImpl(String fileName) {
+    public VMDaoFileImpl(String fileName) throws VMDaoException {
         this.FILENAME = fileName;
         loadVM();
     }
 
     @Override
-    public boolean loadVM() {
+    public boolean loadVM() throws VMDaoException {
         try {
             Scanner sc = new Scanner(new BufferedReader(new FileReader(FILENAME)));
             map.clear();
             while (sc.hasNextLine()) {
                 String[] currentLine = sc.nextLine().split(DELIMITER);
                 map.put(currentLine[0], new Item(currentLine[0],
-                        Double.parseDouble(currentLine[1]),
+                        (currentLine[1]),
                         Integer.parseInt(currentLine[2])));
             }
         } catch (FileNotFoundException e) {
-            System.out.println("error");
+            throw new VMDaoException("Vending machine could not be loaded to memory", e);
         }
         return true;
     }
 
     @Override
-    public boolean saveVM() {
+    public boolean saveVM() throws VMDaoException {
         try {
             PrintWriter writer = new PrintWriter(new FileWriter(FILENAME));
             for (Item item : map.values()) {
@@ -43,7 +44,7 @@ public class VMDaoFileImpl implements VMDao {
             writer.close();
             return true;
         } catch (IOException e) {
-            return false;
+            throw new VMDaoException("Could not save vending machine to memory", e);
         }
     }
 

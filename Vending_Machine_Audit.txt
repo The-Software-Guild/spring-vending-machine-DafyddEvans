@@ -1,0 +1,18 @@
+2021-10-19T14:55:03.007273::£1.30 added to balance
+2021-10-19T14:55:05.7583757::Pepsi-Max purchased for 1.30
+2021-10-19T14:55:10.7230385::£2.00 added to balance
+2021-10-19T14:55:11.9548466::Fanta purchased for 1.15
+2021-10-19T14:55:11.9588339::dispensed 1 X Fifty pence coin
+2021-10-19T14:55:11.9598314::dispensed 1 X Twenty pence coin
+2021-10-19T14:55:11.9598314::dispensed 1 X Ten pence coin
+2021-10-19T14:55:11.9598314::dispensed 1 X Five pence coin
+2021-10-19T14:56:35.6700399::£2.60 added to balance
+2021-10-19T14:56:46.4818274::7Up purchased for 1.70
+2021-10-19T14:56:46.4828258::dispensed 1 X Fifty pence coin
+2021-10-19T14:56:46.4828258::dispensed 2 X Twenty pence coin
+2021-10-19T14:56:49.1628715::£2.00 added to balance
+2021-10-19T14:56:50.3309228::Water purchased for 0.50
+2021-10-19T14:56:50.331921::dispensed 1 X One pound coin
+2021-10-19T14:56:50.331921::dispensed 1 X Fifty pence coin
+2021-10-19T14:57:08.8948261::£2.00 added to balance
+2021-10-19T14:57:09.7267213::dispensed 1 X Two pound coin

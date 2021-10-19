@@ -1,5 +1,10 @@
-Coke2::1.30::0
-Coke3::1.30::6
-Coke4::1.30::9
-Coke5::1.30::10
-Coke1::1.30::10
+Coca-Cola::1.40::9
+Water::0.50::6
+7Up::1.70::6
+Tango::1.35::7
+Sprite::1.65::7
+Pepsi-Max::1.30::8
+Diet-Coke::1.25::10
+Diet-Pepsi::1.20::7
+Pepsi::1.50::9
+Fanta::1.15::6

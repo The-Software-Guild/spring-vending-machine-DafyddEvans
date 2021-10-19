@@ -1,6 +1,10 @@
 package com.m3.c130.vending_machine.service;
 
 import com.m3.c130.vending_machine.Change;
+import com.m3.c130.vending_machine.InsufficientFundsException;
+import com.m3.c130.vending_machine.NoItemInventoryException;
+import com.m3.c130.vending_machine.VMDaoException;
+import com.m3.c130.vending_machine.dao.VMAuditDao;
 import com.m3.c130.vending_machine.dao.VMDao;
 import com.m3.c130.vending_machine.dto.Item;
 
@@ -9,22 +13,25 @@ import java.math.RoundingMode;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-import java.util.stream.Collectors;
+
 
 public class VMServiceLayerImpl implements VMServiceLayer {
     private final VMDao dao;
+    private final VMAuditDao auditDao;
     private BigDecimal balance = new BigDecimal("0.00");
 
-    public VMServiceLayerImpl(VMDao dao) {
+    public VMServiceLayerImpl(VMDao dao, VMAuditDao auditDao) {
         this.dao = dao;
+        this.auditDao = auditDao;
     }
 
     public BigDecimal getBalance() {
         return balance;
     }
 
-    public void addBalance(BigDecimal balance) {
+    public void addBalance(BigDecimal balance) throws VMDaoException {
         this.balance = this.balance.add(balance).setScale(2, RoundingMode.DOWN);
+        auditDao.writeAuditEntry(String.format("£%.2f added to balance", balance.doubleValue()));
     }
 
     public void subtractBalance(BigDecimal balance) {
@@ -32,29 +39,41 @@ public class VMServiceLayerImpl implements VMServiceLayer {
     }
 
     public List<Item> listVMItems() {
-        return dao.listVMItems().stream().filter((i) -> i.getQuantity() != 0).collect(Collectors.toList());
+        List<Item> lst = dao.listVMItems();
+        lst.sort((i1, i2) -> i2.getCost().compareTo(i1.getCost()));
+        return lst;
     }
 
-    public boolean purchaseItem(Item item) {
-        if (item.getCost().doubleValue() <= balance.doubleValue()) {
-            subtractBalance(item.getCost());
-            return dispenseItem(item);
+    public boolean purchaseItem(Item item) throws VMDaoException, NoItemInventoryException, InsufficientFundsException {
+        if (item.getQuantity() > 0) {
+            if (item.getCost().doubleValue() <= balance.doubleValue()) {
+                if (dispenseItem(item)) {
+                    auditDao.writeAuditEntry(String.format("%s purchased for %.2f", item.getName(), item.getCost()));
+                    subtractBalance(item.getCost());
+                    return true;
+                } else {
+                    return false;
+                }
+            } else {
+                throw new InsufficientFundsException("You don't have enough funds, please insert more coins");
+            }
         } else {
-            return false;
+            throw new NoItemInventoryException("This item is out of stock, please make another selection");
         }
     }
 
-    public boolean dispenseItem(Item item) {
+    public boolean dispenseItem(Item item) throws VMDaoException {
         item.reduceQuantity();
         return dao.saveVM();
     }
 
-    public Map<Change, Integer> balanceToCoins() {
+    public Map<Change, Integer> balanceToCoins() throws VMDaoException {
         Map<Change, Integer> map = new HashMap<>();
         for (Change change : Change.values()) {
             int i = balance.divide(BigDecimal.valueOf(change.value), RoundingMode.DOWN).intValue();
             balance = balance.subtract(BigDecimal.valueOf((i * change.value)));
             if (i > 0) {
+                auditDao.writeAuditEntry("dispensed " + i + " X " + change.name);
                 map.put(change, i);
             }
             if (balance.doubleValue() == 0) {

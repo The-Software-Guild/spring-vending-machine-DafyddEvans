@@ -1,5 +1,8 @@
 package com.m3.c130.vending_machine.controller;
 
+import com.m3.c130.vending_machine.InsufficientFundsException;
+import com.m3.c130.vending_machine.NoItemInventoryException;
+import com.m3.c130.vending_machine.VMDaoException;
 import com.m3.c130.vending_machine.dto.Item;
 import com.m3.c130.vending_machine.service.VMServiceLayer;
 import com.m3.c130.vending_machine.view.VMView;
@@ -18,36 +21,38 @@ public class VMController {
         this.service = service;
     }
 
-    public void run() {
+    public void run() throws VMDaoException {
         while (true) {
             try {
                 view.displayBalance(service.getBalance());
                 List<Item> lst = service.listVMItems();
                 view.displayMenu(lst);
-                int choice;
                 if (lst.size() == 0) {
                     view.emptyVM();
-                    choice = 0;
-                } else {
-                    choice = getChoice();
+                    break;
                 }
+
+                int choice = getChoice();
                 if (choice == 0) {
                     break;
                 } else if (choice > 0) {
-                    if (purchaseItem(lst.get(choice - 1))) {
-                        view.dispenseCoins(service.balanceToCoins());
-                    } else {
-                        break;
-                    }
+                    purchaseItem(lst.get(choice - 1));
                 }
-            } catch (Exception e) {
-                System.out.println(e);
+            } catch (VMDaoException | NoItemInventoryException e) {
+                view.displayErrorMessage(e.getMessage());
+            } catch (InsufficientFundsException e) {
+                double inserted = view.getMoreBalance(e.getMessage());
+                if (inserted == 0) {
+                    break;
+                } else {
+                    service.addBalance(BigDecimal.valueOf(inserted));
+                }
             }
         }
         view.dispenseCoins(service.balanceToCoins());
     }
 
-    public int getChoice() {
+    public int getChoice() throws VMDaoException {
         if (service.getBalance().doubleValue() == 0) {
             double inserted = view.zeroBalance();
             if (inserted == 0) {
@@ -61,18 +66,10 @@ public class VMController {
         }
     }
 
-    public boolean purchaseItem(Item item) {
-        if (!service.purchaseItem(item)) {
-            view.insufficientFunds(service.getBalance(), item.getCost());
-            double inserted = view.getMoreBalance();
-            if (inserted == 0) {
-                return false;
-            } else {
-                service.addBalance(BigDecimal.valueOf(inserted));
-                purchaseItem(item);
-            }
+    public void purchaseItem(Item item) throws VMDaoException, NoItemInventoryException, InsufficientFundsException {
+        if (service.purchaseItem(item)) {
+            view.itemPurchased(item);
+            view.dispenseCoins(service.balanceToCoins());
         }
-        view.itemPurchased(item);
-        return true;
     }
 }
