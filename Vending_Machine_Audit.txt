@@ -20,3 +20,9 @@
 2021-10-19T15:49:29.3812698::NoItemInventoryException thrown for Fanta
 2021-10-19T15:49:36.1130118::NoItemInventoryException thrown for Fanta
 2021-10-19T15:49:51.4564375::dispensed 1 X Two pound coin
+2021-10-20T21:10:17.6057605::£2.00 added to balance
+2021-10-20T21:10:18.963266::Water purchased for £0.50
+2021-10-20T21:10:18.9722147::dispensed 1 X One pound coin
+2021-10-20T21:10:18.9722147::dispensed 1 X Fifty pence coin
+2021-10-20T21:10:48.2906158::£100.00 added to balance
+2021-10-20T21:10:50.8296757::dispensed 2 X Fifty pound note
