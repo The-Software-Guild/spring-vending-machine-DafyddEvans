@@ -4,12 +4,14 @@ import com.m3.c130.vending_machine.VMDaoException;
 import com.m3.c130.vending_machine.dto.Item;
 
 import java.io.*;
-import java.util.*;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Scanner;
 
 public class VMDaoFileImpl implements VMDao {
     private final String FILENAME;
     private final String DELIMITER = "::";
-    private Map<String, Item> map = new HashMap<>();
+    private List<Item> list = new ArrayList<>();
 
     public VMDaoFileImpl(String fileName) throws VMDaoException {
         this.FILENAME = fileName;
@@ -20,10 +22,10 @@ public class VMDaoFileImpl implements VMDao {
     public boolean loadVM() throws VMDaoException {
         try {
             Scanner sc = new Scanner(new BufferedReader(new FileReader(FILENAME)));
-            map.clear();
+            list.clear();
             while (sc.hasNextLine()) {
                 String[] currentLine = sc.nextLine().split(DELIMITER);
-                map.put(currentLine[0], new Item(currentLine[0],
+                list.add(new Item(currentLine[0],
                         (currentLine[1]),
                         Integer.parseInt(currentLine[2])));
             }
@@ -37,7 +39,7 @@ public class VMDaoFileImpl implements VMDao {
     public boolean saveVM() throws VMDaoException {
         try {
             PrintWriter writer = new PrintWriter(new FileWriter(FILENAME));
-            for (Item item : map.values()) {
+            for (Item item : list) {
                 writer.println(item.getName() + DELIMITER + item.getCost() + DELIMITER + item.getQuantity());
                 writer.flush();
             }
@@ -50,8 +52,7 @@ public class VMDaoFileImpl implements VMDao {
 
     @Override
     public List<Item> listVMItems() {
-        List<Item> lst = new ArrayList<>(map.values());
-        lst.sort((i1, i2) -> i2.getCost().compareTo(i1.getCost()));
-        return lst;
+        list.sort((i1, i2) -> i2.getCost().compareTo(i1.getCost()));
+        return list;
     }
 }
