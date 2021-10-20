@@ -2,6 +2,7 @@ package com.m3.c130.vending_machine.dto;
 
 import java.math.BigDecimal;
 import java.math.RoundingMode;
+import java.util.Objects;
 
 public class Item {
 
@@ -29,5 +30,18 @@ public class Item {
 
     public void reduceQuantity() {
         this.quantity--;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Item item = (Item) o;
+        return quantity == item.quantity && Objects.equals(name, item.name) && Objects.equals(cost, item.cost);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(name, cost, quantity);
     }
 }

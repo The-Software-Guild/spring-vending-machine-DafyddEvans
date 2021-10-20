@@ -50,6 +50,8 @@ public class VMDaoFileImpl implements VMDao {
 
     @Override
     public List<Item> listVMItems() {
-        return new ArrayList<>(map.values());
+        List<Item> lst = new ArrayList<>(map.values());
+        lst.sort((i1, i2) -> i2.getCost().compareTo(i1.getCost()));
+        return lst;
     }
 }

@@ -34,14 +34,12 @@ public class VMServiceLayerImpl implements VMServiceLayer {
         auditDao.writeAuditEntry(String.format("£%.2f added to balance", balance.doubleValue()));
     }
 
-    public void subtractBalance(BigDecimal balance) throws VMDaoException {
+    public void subtractBalance(BigDecimal balance) {
         this.balance = this.balance.subtract(balance).setScale(2, RoundingMode.DOWN);
     }
 
     public List<Item> listVMItems() {
-        List<Item> lst = dao.listVMItems();
-        lst.sort((i1, i2) -> i2.getCost().compareTo(i1.getCost()));
-        return lst;
+        return dao.listVMItems();
     }
 
     public boolean purchaseItem(Item item) throws VMDaoException, NoItemInventoryException, InsufficientFundsException {
