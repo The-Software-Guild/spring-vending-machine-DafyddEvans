@@ -11,7 +11,7 @@ import java.util.Scanner;
 public class VMDaoFileImpl implements VMDao {
     private final String FILENAME;
     private final String DELIMITER = "::";
-    private List<Item> list = new ArrayList<>();
+    private final List<Item> list = new ArrayList<>();
 
     public VMDaoFileImpl(String fileName) throws VMDaoException {
         this.FILENAME = fileName;
