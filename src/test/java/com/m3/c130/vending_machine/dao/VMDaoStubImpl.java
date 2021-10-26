@@ -1,7 +1,7 @@
 package com.m3.c130.vending_machine.dao;
 
-import com.m3.c130.vending_machine.VMDaoException;
 import com.m3.c130.vending_machine.dto.Item;
+import com.m3.c130.vending_machine.service.VMDaoException;
 
 import java.io.FileNotFoundException;
 import java.util.ArrayList;

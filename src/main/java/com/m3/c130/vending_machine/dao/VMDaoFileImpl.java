@@ -1,20 +1,21 @@
 package com.m3.c130.vending_machine.dao;
 
-import com.m3.c130.vending_machine.VMDaoException;
 import com.m3.c130.vending_machine.dto.Item;
+import com.m3.c130.vending_machine.service.VMDaoException;
+import org.springframework.stereotype.Component;
 
 import java.io.*;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
+@Component
 public class VMDaoFileImpl implements VMDao {
-    private final String FILENAME;
+    private final String FILENAME = "Vending_Machine.txt";
     private final String DELIMITER = "::";
     private final List<Item> list = new ArrayList<>();
 
-    public VMDaoFileImpl(String fileName) throws VMDaoException {
-        this.FILENAME = fileName;
+    public VMDaoFileImpl() throws VMDaoException {
         loadVM();
     }
 

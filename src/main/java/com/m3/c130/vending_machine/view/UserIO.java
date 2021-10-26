@@ -1,4 +1,4 @@
-package com.m3.c130.vending_machine.ui;
+package com.m3.c130.vending_machine.view;
 
 public interface UserIO {
 

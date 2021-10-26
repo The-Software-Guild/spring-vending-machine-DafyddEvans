@@ -1,5 +1,5 @@
 7Up::1.70::6
-Sprite::1.65::7
+Sprite::1.65::6
 Pepsi::1.50::9
 Coca-Cola::1.40::9
 Tango::1.35::5

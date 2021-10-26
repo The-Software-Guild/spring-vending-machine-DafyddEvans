@@ -1,27 +1,22 @@
 package com.m3.c130.vending_machine;
 
 import com.m3.c130.vending_machine.controller.VMController;
-import com.m3.c130.vending_machine.dao.VMAuditDao;
-import com.m3.c130.vending_machine.dao.VMAuditDaoImpl;
-import com.m3.c130.vending_machine.dao.VMDao;
-import com.m3.c130.vending_machine.dao.VMDaoFileImpl;
-import com.m3.c130.vending_machine.service.VMServiceLayer;
-import com.m3.c130.vending_machine.service.VMServiceLayerImpl;
-import com.m3.c130.vending_machine.ui.UserIO;
-import com.m3.c130.vending_machine.ui.VMUserIOImpl;
-import com.m3.c130.vending_machine.view.VMView;
+import com.m3.c130.vending_machine.service.VMDaoException;
+import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 
 public class App {
     public static void main(String[] args) {
-        UserIO io = new VMUserIOImpl();
+
+        AnnotationConfigApplicationContext appContext = new AnnotationConfigApplicationContext();
+        appContext.scan("com.m3.c130.vending_machine");
+        appContext.refresh();
+
+        VMController controller = appContext.getBean("VMController", VMController.class);
         try {
-            VMDao dao = new VMDaoFileImpl("Vending_Machine.txt");
-            VMAuditDao auditDao = new VMAuditDaoImpl("Vending_Machine_Audit.txt");
-            VMServiceLayer service = new VMServiceLayerImpl(dao, auditDao);
-            VMController controller = new VMController(new VMView(io), service);
             controller.run();
         } catch (VMDaoException e) {
-            io.print(e.getMessage());
+            System.out.println(e.getMessage());
         }
+
     }
 }

@@ -1,12 +1,10 @@
 package com.m3.c130.vending_machine.service;
 
-import com.m3.c130.vending_machine.Change;
-import com.m3.c130.vending_machine.InsufficientFundsException;
-import com.m3.c130.vending_machine.NoItemInventoryException;
-import com.m3.c130.vending_machine.VMDaoException;
 import com.m3.c130.vending_machine.dao.VMAuditDao;
 import com.m3.c130.vending_machine.dao.VMDao;
 import com.m3.c130.vending_machine.dto.Item;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
 
 import java.math.BigDecimal;
 import java.math.RoundingMode;
@@ -14,12 +12,13 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-
+@Component
 public class VMServiceLayerImpl implements VMServiceLayer {
     private final VMDao dao;
     private final VMAuditDao auditDao;
     private BigDecimal balance = new BigDecimal("0.00");
 
+    @Autowired
     public VMServiceLayerImpl(VMDao dao, VMAuditDao auditDao) {
         this.dao = dao;
         this.auditDao = auditDao;

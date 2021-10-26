@@ -1,9 +1,5 @@
 package com.m3.c130.vending_machine.service;
 
-import com.m3.c130.vending_machine.Change;
-import com.m3.c130.vending_machine.InsufficientFundsException;
-import com.m3.c130.vending_machine.NoItemInventoryException;
-import com.m3.c130.vending_machine.VMDaoException;
 import com.m3.c130.vending_machine.dao.VMAuditDao;
 import com.m3.c130.vending_machine.dao.VMAuditDaoStubImpl;
 import com.m3.c130.vending_machine.dao.VMDao;

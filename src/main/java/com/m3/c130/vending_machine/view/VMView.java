@@ -1,17 +1,19 @@
 package com.m3.c130.vending_machine.view;
 
-import com.m3.c130.vending_machine.Change;
 import com.m3.c130.vending_machine.dto.Item;
-import com.m3.c130.vending_machine.ui.UserIO;
+import com.m3.c130.vending_machine.service.Change;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
 
 import java.util.List;
 import java.util.Map;
 
-
+@Component
 public class VMView {
 
     private final UserIO io;
 
+    @Autowired
     public VMView(UserIO io) {
         this.io = io;
     }

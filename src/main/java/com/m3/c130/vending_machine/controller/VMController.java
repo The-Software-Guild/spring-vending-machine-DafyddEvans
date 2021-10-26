@@ -1,21 +1,24 @@
 package com.m3.c130.vending_machine.controller;
 
-import com.m3.c130.vending_machine.InsufficientFundsException;
-import com.m3.c130.vending_machine.NoItemInventoryException;
-import com.m3.c130.vending_machine.VMDaoException;
 import com.m3.c130.vending_machine.dto.Item;
+import com.m3.c130.vending_machine.service.InsufficientFundsException;
+import com.m3.c130.vending_machine.service.NoItemInventoryException;
+import com.m3.c130.vending_machine.service.VMDaoException;
 import com.m3.c130.vending_machine.service.VMServiceLayer;
 import com.m3.c130.vending_machine.view.VMView;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
 
 import java.math.BigDecimal;
 import java.util.List;
 
-
+@Component
 public class VMController {
 
     private final VMView view;
     private final VMServiceLayer service;
 
+    @Autowired
     public VMController(VMView view, VMServiceLayer service) {
         this.view = view;
         this.service = service;

@@ -1,10 +1,13 @@
-package com.m3.c130.vending_machine.ui;
+package com.m3.c130.vending_machine.view;
+
+import org.springframework.stereotype.Component;
 
 import java.util.Scanner;
 
+@Component
 public class VMUserIOImpl implements UserIO {
 
-    Scanner sc = new Scanner(System.in);
+    private Scanner sc = new Scanner(System.in);
 
     @Override
     public void print(Object str) {

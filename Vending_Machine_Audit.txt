@@ -26,3 +26,11 @@
 2021-10-20T21:10:18.9722147::dispensed 1 X Fifty pence coin
 2021-10-20T21:10:48.2906158::£100.00 added to balance
 2021-10-20T21:10:50.8296757::dispensed 2 X Fifty pound note
+2021-10-26T13:58:15.124345::£100.00 added to balance
+2021-10-26T13:58:16.3900143::Sprite purchased for £1.65
+2021-10-26T13:58:16.3979922::dispensed 1 X Fifty pound note
+2021-10-26T13:58:16.3979922::dispensed 2 X Twenty pound note
+2021-10-26T13:58:16.3979922::dispensed 4 X Two pound coin
+2021-10-26T13:58:16.3989883::dispensed 1 X Twenty pence coin
+2021-10-26T13:58:16.3989883::dispensed 1 X Ten pence coin
+2021-10-26T13:58:16.3989883::dispensed 1 X Five pence coin

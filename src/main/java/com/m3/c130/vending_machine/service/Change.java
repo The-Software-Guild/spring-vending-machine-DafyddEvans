@@ -1,4 +1,4 @@
-package com.m3.c130.vending_machine;
+package com.m3.c130.vending_machine.service;
 
 public enum Change {
     FIFTY_POUND(50, "Fifty pound note"),

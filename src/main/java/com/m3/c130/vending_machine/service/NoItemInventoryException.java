@@ -1,4 +1,4 @@
-package com.m3.c130.vending_machine;
+package com.m3.c130.vending_machine.service;
 
 public class NoItemInventoryException extends Exception {
     public NoItemInventoryException(String message) {
